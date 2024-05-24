@@ -1,0 +1,67 @@
+{
+  "unpublishedPage": {
+    "name": "Page1",
+    "slug": "page1",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 680,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Page1_getSupportTickets",
+              "name": "getSupportTickets",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Page1_functions.getFilteredTickets",
+              "name": "functions.getFilteredTickets",
+              "collectionId": "Page1_functions",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "() => {\n  const allTickets = getSupportTickets.data;\n  let filteredTasks = allTickets;\n  if (sel_status.selectedOptionValue.length > 0) {\n    filteredTasks = filteredTasks.filter(t => t.status === sel_status.selectedOptionValue);\n  }\n  if (sel_sort.selectedOptionValue === 'newest') {\n    return filteredTasks.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at));\n  } else if (sel_sort.selectedOptionValue === 'oldest') {\n    return filteredTasks.slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at));\n  }\n  return filteredTasks;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Page1",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": []
+  },
+  "deleted": false,
+  "gitSyncId": "664ef6ca92f0a0675125d3ea_f8166940-7fa0-4b82-a9db-fadad36ddb2b"
+}
