@@ -29,24 +29,12 @@
         "layoutOnLoadActions": [
           [
             {
-              "id": "Page1_getSupportTickets",
-              "name": "getSupportTickets",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
               "id": "Page1_functions.getFilteredTickets",
               "name": "functions.getFilteredTickets",
               "collectionId": "Page1_functions",
               "confirmBeforeExecute": false,
               "pluginType": "JS",
-              "jsonPathKeys": [
-                "() => {\n  const allTickets = getSupportTickets.data;\n  let filteredTasks = allTickets;\n  if (sel_status.selectedOptionValue.length > 0) {\n    filteredTasks = filteredTasks.filter(t => t.status === sel_status.selectedOptionValue);\n  }\n  if (sel_sort.selectedOptionValue === 'newest') {\n    return filteredTasks.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at));\n  } else if (sel_sort.selectedOptionValue === 'oldest') {\n    return filteredTasks.slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at));\n  }\n  return filteredTasks;\n}"
-              ],
+              "jsonPathKeys": [],
               "timeoutInMillisecond": 10000
             }
           ]
